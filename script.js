@@ -45,7 +45,7 @@ function getReportData() {
         vehicle: normalizeValue(elements.vehicle?.value),
         date: normalizeValue(elements.date?.value),
         time: normalizeValue(elements.time?.value),
-        message: normalizeValue(elements.message?.value, "")
+        message: elements.message?.value?.trim() || ""
     };
 }
 
@@ -70,7 +70,9 @@ function setLoadingState(isLoading) {
 
 function clampText(text, maxLength = 1000) {
     if (!text) return "Nespecificat";
-    return text.length > maxLength ? `${text.slice(0, maxLength - 3)}...` : text;
+    return text.length > maxLength
+        ? `${text.slice(0, maxLength - 3)}...`
+        : text;
 }
 
 function buildDiscordPayload(data) {
@@ -112,7 +114,12 @@ async function handleReportSubmit(event) {
         setFormStatus("Te rugăm să completezi descrierea sesizării înainte de trimitere.", "error");
         return;
     }
-    
+
+    if (!WEBHOOK_URL || WEBHOOK_URL === "PUNE_AICI_WEBHOOK_NOU") {
+        setFormStatus("Adaugă mai întâi webhook-ul Discord în script.js.", "error");
+        return;
+    }
+
     setFormStatus("Sesizarea se trimite...");
     setLoadingState(true);
 
@@ -143,9 +150,6 @@ function initReportForm() {
     if (!elements.reportForm) return;
     elements.reportForm.addEventListener("submit", handleReportSubmit);
 }
-
-initCookieBanner();
-initReportForm();
 
 function initGallerySlider() {
     const slider = document.getElementById("gallerySlider");
@@ -183,4 +187,6 @@ function initGallerySlider() {
     showSlide(0);
 }
 
+initCookieBanner();
+initReportForm();
 initGallerySlider();
