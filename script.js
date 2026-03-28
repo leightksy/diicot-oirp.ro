@@ -112,12 +112,7 @@ async function handleReportSubmit(event) {
         setFormStatus("Te rugăm să completezi descrierea sesizării înainte de trimitere.", "error");
         return;
     }
-
-    if (WEBHOOK_URL === "https://discord.com/api/webhooks/1474853981883859238/Kb28vWClSFnHJa3aKSnoOTnQ8vQUK4ZrUb5qSX8sNA_hs-mglR7ybRF933Ehz9Eotfbb") {
-        setFormStatus("Adaugă mai întâi webhook-ul Discord în script.js.", "error");
-        return;
-    }
-
+    
     setFormStatus("Sesizarea se trimite...");
     setLoadingState(true);
 
