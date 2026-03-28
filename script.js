@@ -113,7 +113,7 @@ async function handleReportSubmit(event) {
         return;
     }
 
-    if (WEBHOOK_URL === "Phttps://discord.com/api/webhooks/1476980265875279994/au0VNZ_hAcinDJRXuHAXR4XHeddWQhrQ8UL6MZ-5BcIm3orQ5dTajZ48RHTCEkHKo3Px") {
+    if (WEBHOOK_URL === "https://discord.com/api/webhooks/1474853981883859238/Kb28vWClSFnHJa3aKSnoOTnQ8vQUK4ZrUb5qSX8sNA_hs-mglR7ybRF933Ehz9Eotfbb") {
         setFormStatus("Adaugă mai întâi webhook-ul Discord în script.js.", "error");
         return;
     }
